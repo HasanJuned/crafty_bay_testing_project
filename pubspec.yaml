@@ -1,0 +1,39 @@
+name: crafty_bay_testing_project
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  flutter_svg: ^1.1.6
+  get: ^4.6.5
+  pin_code_fields: ^8.0.1
+  carousel_slider: ^4.2.1
+  http: ^0.13.5
+  shared_preferences: any
+  connectivity_plus: ^5.0.1
+  webview_flutter: any
+  url_launcher: ^6.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
