@@ -43,12 +43,15 @@ class _PowerPlayScreenState extends State<PowerPlayScreen> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.yellowAccent.withOpacity(0.9)
+                        ),
                         onPressed: () {
                           count++;
                           // print(count);
                           Get.to(PlayerScreen());
                         },
-                        child: const Text('Done'),
+                        child: const Text('Done', style: TextStyle(color: Colors.black),),
                       ),
                     ),
                   ],

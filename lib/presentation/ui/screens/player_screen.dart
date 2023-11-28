@@ -157,10 +157,10 @@ class _PlayerScreenState extends State<PlayerScreen> {
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.yellow.withOpacity(0.9)),
+                            backgroundColor: Colors.yellow),
                         child: Text(
                           'Insights',
-                          style: TextStyle(color: Colors.white.withOpacity(1)),
+                            style: TextStyle(color: Colors.black),
                         ),
                       ),
                     ],
