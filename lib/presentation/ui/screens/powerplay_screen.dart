@@ -1,4 +1,5 @@
 import 'package:crafty_bay_testing_project/presentation/ui/screens/player_screen.dart';
+import 'package:crafty_bay_testing_project/presentation/ui/widgets/number_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,8 +14,7 @@ class PowerPlayScreen extends StatefulWidget {
 
 class _PowerPlayScreenState extends State<PowerPlayScreen> {
   int count = 0;
-  bool ami = false;
-  TextEditingController _controller = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,25 +34,31 @@ class _PowerPlayScreenState extends State<PowerPlayScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for(int i=0; i<3; i++)
+                    for (int i = 0; i < 3; i++)
                       DesignNumberPadWidgets(
-                        playNumber: i+1,
-
+                        playNumber: i + 1,
                       ),
+                    Form(
+                      key: _formKey,
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  Colors.yellowAccent.withOpacity(0.9)),
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
 
 
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.yellowAccent.withOpacity(0.9)
+
+                              Get.to(const PlayerScreen());
+                            }
+                          },
+                          child: const Text(
+                            'Done',
+                            style: TextStyle(color: Colors.black),
+                          ),
                         ),
-                        onPressed: () {
-                          count++;
-                          // print(count);
-                          Get.to(PlayerScreen());
-                        },
-                        child: const Text('Done', style: TextStyle(color: Colors.black),),
                       ),
                     ),
                   ],

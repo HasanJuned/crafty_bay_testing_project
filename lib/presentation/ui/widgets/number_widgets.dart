@@ -13,21 +13,25 @@ class NumberWidget extends StatefulWidget {
 }
 
 class _NumberWidgetState extends State<NumberWidget> {
-  bool x = false;
+  bool colorChangeDecider = false;
   int count = 0;
+
+  void returnCount(){
+    count += widget.number;
+    print(count);
+  }
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        x = true;
-        count++;
-        print(count);
+        colorChangeDecider = true;
+        returnCount();
         setState(() {});
       },
       style: ElevatedButton.styleFrom(
           side: BorderSide(
-              color: x == true ? Colors.yellowAccent : Colors.white24),
+              color: colorChangeDecider == true ? Colors.yellowAccent : Colors.white24),
           backgroundColor: Colors.white24),
       child: Text(
         widget.number.toString(),
