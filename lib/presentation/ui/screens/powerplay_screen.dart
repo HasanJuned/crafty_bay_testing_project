@@ -36,6 +36,7 @@ class _PowerPlayScreenState extends State<PowerPlayScreen> {
                   children: [
                     for(int i=0; i<3; i++)
                       DesignNumberPadWidgets(
+                        playNumber: i+1,
 
                       ),
 

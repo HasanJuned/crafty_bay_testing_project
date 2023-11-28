@@ -4,16 +4,18 @@ import 'number_widgets.dart';
 
 class DesignNumberPadWidgets extends StatelessWidget {
   const DesignNumberPadWidgets({
-    super.key,
+    super.key, required this.playNumber,
   });
+  final int playNumber;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Power Play 1',
-          style: TextStyle(
+        Text(
+          'Player Number ${playNumber.toString()}',
+          style: const TextStyle(
               fontSize: 18, color: Colors.white, letterSpacing: 1),
         ),
         const SizedBox(

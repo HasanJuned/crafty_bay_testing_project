@@ -128,11 +128,11 @@ class _PlayerScreenState extends State<PlayerScreen> {
                         tileColor: Colors.white,
                         trailing: ElevatedButton(
                           onPressed: () {},
-                          child: const Text('Follow'),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white24,
                               side:
                                   const BorderSide(color: Colors.yellowAccent)),
+                          child: const Text('Follow'),
                         ),
                       ),
                     ),
@@ -158,7 +158,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.yellow),
-                        child: Text(
+                        child: const Text(
                           'Insights',
                             style: TextStyle(color: Colors.black),
                         ),
@@ -166,7 +166,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                     ],
                   ),
                 ),
-                TabBar(
+                const TabBar(
                     unselectedLabelColor: Colors.white,
                     labelColor: Colors.yellowAccent,
                     labelStyle:
@@ -188,7 +188,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                         text: 'Photos',
                       ),
                     ]),
-                Expanded(
+                const Expanded(
                   child: TabBarView(
                     children: [
                       Center(
