@@ -7,8 +7,6 @@ class DesignNumberPadWidgets extends StatelessWidget {
     super.key, required this.playNumber,
   });
   final int playNumber;
-  int count = 0;
-  List<int> countAdditions = [];
   @override
   Widget build(BuildContext context) {
     return Column(

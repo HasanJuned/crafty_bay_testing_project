@@ -172,9 +172,9 @@ class _PlayerScreenState extends State<PlayerScreen> {
 
                     ],
                   ),
-                  Column(
+                  const Column(
                     children: [
-                      const TabBar(
+                       TabBar(
                         isScrollable: true,
                           unselectedLabelColor: Colors.white,
                           labelColor: Colors.yellowAccent,
@@ -200,7 +200,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                       SizedBox(
                         height: 100,
                         width: 100,
-                        child: const Expanded(
+                        child: Expanded(
                           child: TabBarView(
                             children: [
                               Center(
@@ -224,8 +224,8 @@ class _PlayerScreenState extends State<PlayerScreen> {
                       ),
                     ],
                   ),
-                  for(int i=0; i<8; i++)
-                    ElevatedButton(onPressed: (){}, child: Text('Scroll')),
+                  for(int i=0; i<11; i++)
+                    ElevatedButton(onPressed: (){}, child: const Text('Scroll')),
                 ],
               ),
             ),
