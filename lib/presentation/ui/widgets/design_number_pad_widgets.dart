@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'number_widgets.dart';
 
 class DesignNumberPadWidgets extends StatelessWidget {
-  DesignNumberPadWidgets({
+  const DesignNumberPadWidgets({
     super.key, required this.playNumber,
   });
   final int playNumber;
+
   @override
   Widget build(BuildContext context) {
     return Column(

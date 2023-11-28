@@ -11,9 +11,9 @@ class CraftyBay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const PowerPlayScreen(),
+      home: PowerPlayScreen(),
     );
   }
 }

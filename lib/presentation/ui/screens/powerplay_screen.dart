@@ -47,13 +47,8 @@ class _PowerPlayScreenState extends State<PowerPlayScreen> {
                               backgroundColor:
                                   Colors.yellowAccent.withOpacity(0.9)),
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              
+                            Get.to(const PlayerScreen());
 
-
-
-                              Get.to(const PlayerScreen());
-                            }
                           },
                           child: const Text(
                             'Done',
