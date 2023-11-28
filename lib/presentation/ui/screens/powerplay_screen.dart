@@ -12,7 +12,9 @@ class PowerPlayScreen extends StatefulWidget {
 }
 
 class _PowerPlayScreenState extends State<PowerPlayScreen> {
-  static int count = 0;
+  int count = 0;
+  bool ami = false;
+  TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,18 +34,12 @@ class _PowerPlayScreenState extends State<PowerPlayScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const DesignNumberPadWidgets(),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const DesignNumberPadWidgets(),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const DesignNumberPadWidgets(),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    for(int i=0; i<3; i++)
+                      DesignNumberPadWidgets(
+
+                      ),
+
+
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
