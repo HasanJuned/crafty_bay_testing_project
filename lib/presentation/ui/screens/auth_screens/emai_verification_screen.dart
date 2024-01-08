@@ -1,5 +1,10 @@
+import 'package:crafty_bay_testing_project/data/services/network_caller.dart';
+import 'package:crafty_bay_testing_project/data/urls/urls.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/email_verification_controller.dart';
+import 'package:crafty_bay_testing_project/presentation/ui/screens/main_bottom_nav_bar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
   const EmailVerificationScreen({super.key});
@@ -69,14 +74,17 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                 ),
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if(_formKey.currentState!.validate()){
-
-                      }
-                    },
-                    child: const Text('Next'),
-                  ),
+                  child: GetBuilder<EmailVerificationController>(
+                      builder: (emailVerificationController) {
+                    return ElevatedButton(
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          verifyEmail(emailVerificationController);
+                        }
+                      },
+                      child: const Text('Next'),
+                    );
+                  }),
                 ),
               ],
             ),
@@ -84,5 +92,24 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> verifyEmail(
+      EmailVerificationController emailVerificationController) async {
+    final response =
+        await emailVerificationController.verifyEmail(_emailController.text);
+
+    if (response == true) {
+      Get.to(const MainBottomNavBarScreen());
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            backgroundColor: Colors.redAccent,
+            content: Text('Email Verification Failed! Try again'),
+          ),
+        );
+      }
+    }
   }
 }
