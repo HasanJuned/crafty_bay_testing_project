@@ -14,30 +14,29 @@ class CraftyBay extends StatelessWidget {
       home: const SplashScreen(),
       initialBinding: GetxBindings(),
       theme: ThemeData(
-        primarySwatch:
-            MaterialColor(AppColors.primaryColor.value, AppColors().color),
+        primarySwatch: MaterialColor(AppColors.primaryColor.value, AppColors().color),
         elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-                textStyle: const TextStyle(
-                    fontSize: 16,
-                    letterSpacing: 0.5,
-                    fontWeight: FontWeight.w600),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)))),
+          style: ElevatedButton.styleFrom(
+            textStyle: const TextStyle(
+                fontSize: 16, letterSpacing: 0.5, fontWeight: FontWeight.w600),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+        ),
         inputDecorationTheme: const InputDecorationTheme(
-          contentPadding: EdgeInsets.symmetric(horizontal: 16),
+          contentPadding: EdgeInsets.symmetric(horizontal: 10),
           border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(color: AppColors.primaryColor),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(color: AppColors.primaryColor),
           ),
           disabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(color: AppColors.primaryColor),
           ),
         ),
       ),
     );
   }
 }
-
