@@ -99,7 +99,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     final response =
         await emailVerificationController.verifyEmail(_emailController.text);
 
-    if (response == true) {
+    if (response) {
       Get.to(const MainBottomNavBarScreen());
     } else {
       if (mounted) {
