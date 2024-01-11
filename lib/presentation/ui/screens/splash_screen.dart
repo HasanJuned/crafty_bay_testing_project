@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 2)).then(
       (value) {
         Get.offAll(
-          EmailVerificationScreen(),
+          MainBottomNavBarScreen(),
         );
       },
     );
@@ -56,3 +56,4 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+//jhgyftdrtsytfgyh
