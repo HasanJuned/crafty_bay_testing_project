@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../ui/screens/auth_screens/emai_verification_screen.dart';
+
 class AuthController {
   static String? _accessToken;
   static String? _readProfile;
@@ -41,7 +43,7 @@ class AuthController {
   static Future<void> clearUserInfo() async {
     final SharedPreferences sharedPreferences =
     await SharedPreferences.getInstance();
-    //await sharedPreferences.clear().then((value) => Get.offAll(const EmailVerificationScreen()));
+    await sharedPreferences.clear().then((value) => Get.offAll(const EmailVerificationScreen()));
 
   }
 

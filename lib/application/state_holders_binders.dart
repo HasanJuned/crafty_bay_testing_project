@@ -1,4 +1,5 @@
 import 'package:crafty_bay_testing_project/presentation/state_holders/otp_verification_controller.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/slider_controller.dart';
 import 'package:get/get.dart';
 
 import '../presentation/state_holders/email_verification_controller.dart';
@@ -10,6 +11,7 @@ class GetxBindings extends Bindings{
     Get.put(MainBottomNavBarController());
     Get.put(EmailVerificationController());
     Get.put(OtpVerificationController());
+    Get.put(SliderController());
   }
 
 }

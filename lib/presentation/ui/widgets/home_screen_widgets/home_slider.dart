@@ -1,10 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../data/model/slider_data.dart';
 import '../../utility/app_colors.dart';
 
 class HomeSlider extends StatefulWidget {
-  const HomeSlider({Key? key}) : super(key: key);
+  const HomeSlider({Key? key, required this.sliders}) : super(key: key);
+
+  final List<SliderData> sliders;
 
   @override
   State<HomeSlider> createState() => _HomeSliderState();
@@ -27,14 +30,55 @@ class _HomeSliderState extends State<HomeSlider> {
               _selectedSlider.value = page;
             },
           ),
-          items: [1, 2, 3, 4, 5].map((i) {
+          items: widget.sliders.map((i) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: const BoxDecoration(color: Colors.amber),
-                    child: Image.asset('assets/images/laptop.jpg', fit: BoxFit.cover,));
+                  width: MediaQuery.of(context).size.width,
+                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                  decoration:
+                      const BoxDecoration(color: AppColors.primaryColor),
+                  child: Stack(
+                    alignment: Alignment.bottomRight,
+                    children: [
+                      Image.network(
+                        i.image ?? '',
+                        fit: BoxFit.cover,
+                        height: double.infinity,
+                      ),
+                      Positioned(
+                        bottom: 15,
+                        left: 5,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              i.title ?? '',
+                              style: const TextStyle(
+                                color: Colors.brown
+                                ,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 1.3,
+                              ),
+                            ),
+                            const SizedBox(height: 2,),
+                            Text(
+                              i.price ?? '',
+                              style: const TextStyle(
+                                color: Colors.brown
+                                ,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 1,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                );
               },
             );
           }).toList(),
@@ -46,7 +90,7 @@ class _HomeSliderState extends State<HomeSlider> {
             valueListenable: _selectedSlider,
             builder: (context, value, _) {
               List<Widget> list = [];
-              for (int i = 0; i < 5; i++) {
+              for (int i = 0; i < widget.sliders.length; i++) {
                 list.add(Container(
                   height: 10,
                   width: 10,
@@ -67,4 +111,3 @@ class _HomeSliderState extends State<HomeSlider> {
     );
   }
 }
-

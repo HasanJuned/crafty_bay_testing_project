@@ -1,4 +1,5 @@
 import 'package:crafty_bay_testing_project/presentation/state_holders/main_bottom_nav_bar_controller.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/slider_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/screens/cart_screen.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/screens/categories_screen.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/screens/wishlist_screen.dart';
@@ -8,15 +9,28 @@ import 'package:get/get.dart';
 
 import 'home_screen.dart';
 
-class MainBottomNavBarScreen extends StatelessWidget {
+class MainBottomNavBarScreen extends StatefulWidget {
   const MainBottomNavBarScreen({Key? key}) : super(key: key);
 
+  @override
+  State<MainBottomNavBarScreen> createState() => _MainBottomNavBarScreenState();
+}
+
+class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
   final List<Widget> _screens = const[
     HomeScreen(),
     CategoriesScreen(),
     CartScreen(),
     WishListScreen()
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Get.find<SliderController>().getSlider();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

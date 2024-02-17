@@ -1,4 +1,6 @@
+import 'package:crafty_bay_testing_project/presentation/state_holders/auth_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/main_bottom_nav_bar_controller.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/slider_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/utility/image_assets.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/widgets/category_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +51,15 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               width: 4,
             ),
+            CircularIconButton(
+              onTap: () {
+                AuthController.clearUserInfo();
+              },
+              icon: Icons.logout,
+            ),
+            const SizedBox(
+              width: 4,
+            ),
           ],
         ),
       ),
@@ -86,7 +97,19 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 16,
               ),
-              const HomeSlider(),
+              GetBuilder<SliderController>(builder: (sliderController) {
+                if(sliderController.sliderControllerInProgress){
+                  return const SizedBox(
+                    height: 100,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+                return HomeSlider(
+                  sliders: sliderController.sliderModel.data ?? [],
+                );
+              }),
               const SizedBox(
                 height: 8,
               ),
