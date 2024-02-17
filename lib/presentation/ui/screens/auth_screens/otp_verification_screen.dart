@@ -1,6 +1,3 @@
-import 'package:crafty_bay_testing_project/data/services/network_caller.dart';
-import 'package:crafty_bay_testing_project/data/urls/urls.dart';
-import 'package:crafty_bay_testing_project/presentation/state_holders/email_verification_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/otp_verification_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/screens/main_bottom_nav_bar_screen.dart';
 import 'package:flutter/material.dart';
@@ -97,6 +94,12 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   width: double.infinity,
                   child: GetBuilder<OtpVerificationController>(
                       builder: (otpVerificationController) {
+                    if (otpVerificationController
+                        .otpVerificationControllerInProgress) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
                     return ElevatedButton(
                       onPressed: () async {
                         otpVerify(otpVerificationController);
