@@ -8,7 +8,7 @@ import '../../data/urls/urls.dart';
 class SliderController extends GetxController {
   bool _sliderControllerInProgress = false;
   SliderModel _sliderModel = SliderModel();
-  String _message = '';
+  final String _message = '';
 
   bool get sliderControllerInProgress => _sliderControllerInProgress;
 
