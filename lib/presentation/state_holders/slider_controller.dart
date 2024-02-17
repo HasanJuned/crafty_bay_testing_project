@@ -25,7 +25,7 @@ class SliderController extends GetxController {
     _sliderControllerInProgress = false;
     update();
     if (response.isSuccess) {
-      _sliderModel = SliderModel.fromJson(response.responseJson!);
+      _sliderModel = SliderModel.fromJson(response.responseJson ?? {});
       print(response.responseJson);
       return true;
     } else {

@@ -1,4 +1,5 @@
 import 'package:crafty_bay_testing_project/presentation/state_holders/auth_controller.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/category_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/main_bottom_nav_bar_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/slider_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/utility/image_assets.dart';
@@ -98,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 16,
               ),
               GetBuilder<SliderController>(builder: (sliderController) {
-                if(sliderController.sliderControllerInProgress){
+                if (sliderController.sliderControllerInProgress) {
                   return const SizedBox(
                     height: 100,
                     child: Center(
@@ -121,12 +122,27 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(
                 height: 100,
-                child: ListView.builder(
-                    itemCount: 10,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return const CategoryCardWidget();
-                    }),
+                child: GetBuilder<CategoryController>(
+                    builder: (categoryController) {
+                  if (categoryController.categoryControllerInProgress) {
+                    return const SizedBox(
+                      height: 100,
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }
+                  return ListView.builder(
+                      itemCount:
+                          categoryController.categoryModel.data?.length ?? 0,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return CategoryCardWidget(
+                          categoryData:
+                              categoryController.categoryModel.data![index],
+                        );
+                      });
+                }),
               ),
               const SizedBox(
                 height: 2,

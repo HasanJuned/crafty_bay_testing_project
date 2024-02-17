@@ -29,7 +29,7 @@ class CategoriesScreen extends StatelessWidget {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4,
             mainAxisSpacing: 16, crossAxisSpacing: 16), itemBuilder: (context, index){
               return const FittedBox(
-                child: CategoryCardWidget(),
+                child: Icon(Icons.add),
               );
             }),
           ),
