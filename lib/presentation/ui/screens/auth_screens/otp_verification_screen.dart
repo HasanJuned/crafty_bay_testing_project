@@ -5,19 +5,19 @@ import 'package:crafty_bay_testing_project/presentation/ui/screens/main_bottom_n
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
-import 'otp_verification_screen.dart';
+import '../../utility/app_colors.dart';
 
-class EmailVerificationScreen extends StatefulWidget {
-  const EmailVerificationScreen({super.key});
+class OtpVerificationScreen extends StatefulWidget {
+  const OtpVerificationScreen({super.key});
 
   @override
-  State<EmailVerificationScreen> createState() =>
-      _EmailVerificationScreenState();
+  State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
 }
 
-class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
-  final TextEditingController _emailController = TextEditingController();
+class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
+  final TextEditingController _otpController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -40,7 +40,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                Text('Welcome Back',
+                Text('Enter OTP Code',
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge
@@ -49,44 +49,55 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   height: 4,
                 ),
                 Text(
-                  'Please enter your email here',
+                  'A 6 digit OTP code sent to your email',
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       fontSize: 16,
                       color: Colors.grey,
                       fontWeight: FontWeight.normal,
-                      letterSpacing: 0.7),
+                      letterSpacing: 0.2),
                 ),
                 const SizedBox(
                   height: 24,
                 ),
-                TextFormField(
-                  validator: (String? text) {
-                    if (text?.isEmpty == true) {
-                      return 'Enter email';
-                    }
-                    return null;
-                  },
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    hintText: 'Email',
+                PinCodeTextField(
+                  controller: _otpController,
+                  length: 6,
+                  obscureText: false,
+                  animationType: AnimationType.fade,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  keyboardType: TextInputType.number,
+                  pinTheme: PinTheme(
+                    shape: PinCodeFieldShape.box,
+                    borderRadius: BorderRadius.circular(5),
+                    fieldHeight: 50,
+                    fieldWidth: 50,
+                    activeFillColor: Colors.white,
+                    inactiveFillColor: Colors.white,
+                    selectedFillColor: Colors.white,
+                    activeColor: AppColors.primaryColor,
+                    inactiveColor: AppColors.primaryColor,
+                    selectedColor: Colors.green,
                   ),
+                  animationDuration: const Duration(milliseconds: 300),
+                  enableActiveFill: true,
+                  onCompleted: (v) {},
+                  onChanged: (value) {},
+                  beforeTextPaste: (text) {
+                    return true;
+                  },
+                  appContext: context,
                 ),
                 const SizedBox(
-                  height: 4,
+                  height: 2,
                 ),
                 SizedBox(
                   width: double.infinity,
-                  child: GetBuilder<EmailVerificationController>(
-                      builder: (emailVerificationController) {
-                    return ElevatedButton(
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          verifyEmail(emailVerificationController);
-                        }
-                      },
-                      child: const Text('Next'),
-                    );
-                  }),
+                  child: ElevatedButton(
+                    onPressed: () {
+
+                    },
+                    child: const Text('Next'),
+                  ),
                 ),
               ],
             ),
@@ -94,24 +105,5 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> verifyEmail(
-      EmailVerificationController emailVerificationController) async {
-    final response =
-        await emailVerificationController.verifyEmail(_emailController.text.trim());
-
-    if (response) {
-      Get.to(const OtpVerificationScreen());
-    } else {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            backgroundColor: Colors.redAccent,
-            content: Text('Email Verification Failed! Try again'),
-          ),
-        );
-      }
-    }
   }
 }

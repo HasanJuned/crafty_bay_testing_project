@@ -21,8 +21,7 @@ dependencies:
   http: ^0.13.5
   shared_preferences: any
   connectivity_plus: ^5.0.1
-  webview_flutter: any
-  url_launcher: ^6.0.7
+  url_launcher: ^6.0.12
 
 dev_dependencies:
   flutter_test:
@@ -33,7 +32,7 @@ dev_dependencies:
 
 flutter:
 
-  uses-material-design: true
+  uses-material-design: false
 
   assets:
     - assets/images/
