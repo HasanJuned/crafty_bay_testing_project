@@ -24,7 +24,7 @@ class OtpVerificationController extends GetxController {
     update();
 
     if (response.isSuccess) {
-      AuthController.setAccessToken(response.responseJson?['data'] ?? '');
+      AuthController.setAccessToken(response.responseJson!['data']);
       _message = response.responseJson?['data'] ?? '';
       return true;
     } else {

@@ -32,7 +32,7 @@ class MainBottomNavBarScreen extends StatelessWidget {
             showUnselectedLabels: true,
             items: const [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined), label: 'Home'),
+                  icon: Icon(Icons.home_filled), label: 'Home'),
               BottomNavigationBarItem(
                   icon: Icon(Icons.dashboard), label: 'Categories'),
               BottomNavigationBarItem(

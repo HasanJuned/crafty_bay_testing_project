@@ -1,3 +1,4 @@
+import 'package:crafty_bay_testing_project/presentation/state_holders/auth_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/screens/auth_screens/emai_verification_screen.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/utility/image_assets.dart';
 import 'package:flutter/material.dart';
@@ -20,14 +21,13 @@ class _SplashScreenState extends State<SplashScreen> {
     gotoNextScreen();
   }
 
-  void gotoNextScreen() {
-    Future.delayed(const Duration(seconds: 2)).then(
-      (value) {
-        Get.offAll(
-          MainBottomNavBarScreen(),
-        );
-      },
-    );
+  Future<void> gotoNextScreen() async {
+    await AuthController.getAccessToken();
+    Future.delayed(const Duration(seconds: 2)).then((value) {
+      Get.off(AuthController.isLoggedIn()
+          ? const MainBottomNavBarScreen()
+          : const EmailVerificationScreen());
+    });
   }
 
   @override
@@ -56,4 +56,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-//jhgyftdrtsytfgyh
