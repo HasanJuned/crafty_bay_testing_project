@@ -29,55 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Row(
-          children: [
-            SvgPicture.asset(ImageAssets.craftyBayAppBarPhotoSvg),
-            const Spacer(),
-            CircularIconButton(
-              onTap: () {
-                // Get.to(CompleteProfileScreen());
-                if (AuthController.isLoggedIn()) {
-                  Get.find<MainBottomNavBarController>().changeScreen(2);
-                } else {
-                  Get.to(const CompleteProfileScreen());
-                }
-              },
-              icon: Icons.person,
-            ),
-            const SizedBox(
-              width: 8,
-            ),
-            CircularIconButton(
-              onTap: () {
-                launchUrlString("tel://${008801716874981}");
-              },
-              icon: Icons.call,
-            ),
-            const SizedBox(
-              width: 8,
-            ),
-            CircularIconButton(
-              onTap: () {},
-              icon: Icons.notifications_active,
-            ),
-            const SizedBox(
-              width: 4,
-            ),
-            CircularIconButton(
-              onTap: () {
-                AuthController.clearUserInfo();
-              },
-              icon: Icons.logout,
-            ),
-            const SizedBox(
-              width: 4,
-            ),
-          ],
-        ),
-      ),
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -121,9 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 }
-                return HomeSlider(
-                  sliders: sliderController.sliderModel.data ?? [],
-                );
+                return homeSlider(sliderController);
               }),
               const SizedBox(
                 height: 8,
@@ -228,6 +178,64 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  AppBar get appBar {
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      title: Row(
+        children: [
+          SvgPicture.asset(ImageAssets.craftyBayAppBarPhotoSvg),
+          const Spacer(),
+          CircularIconButton(
+            onTap: () {
+              // Get.to(CompleteProfileScreen());
+              if (AuthController.isLoggedIn()) {
+                Get.find<MainBottomNavBarController>().changeScreen(2);
+              } else {
+                Get.to(const CompleteProfileScreen());
+              }
+            },
+            icon: Icons.person,
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          CircularIconButton(
+            onTap: () {
+              launchUrlString("tel://${008801716874981}");
+            },
+            icon: Icons.call,
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          CircularIconButton(
+            onTap: () {},
+            icon: Icons.notifications_active,
+          ),
+          const SizedBox(
+            width: 4,
+          ),
+          CircularIconButton(
+            onTap: () {
+              AuthController.clearUserInfo();
+            },
+            icon: Icons.logout,
+          ),
+          const SizedBox(
+            width: 4,
+          ),
+        ],
+      ),
+    );
+  }
+
+  HomeSlider homeSlider(SliderController sliderController){
+    return HomeSlider(
+      sliders: sliderController.sliderModel.data ?? [],
     );
   }
 }
