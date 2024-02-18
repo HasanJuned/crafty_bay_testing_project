@@ -9,6 +9,7 @@ import 'package:crafty_bay_testing_project/presentation/ui/widgets/category_card
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../state_holders/new_product_controller.dart';
 import '../widgets/circular_icon_button.dart';
@@ -42,7 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 8,
             ),
             CircularIconButton(
-              onTap: () {},
+              onTap: () {
+                launchUrlString("tel://${008801716874981}");
+              },
               icon: Icons.call,
             ),
             const SizedBox(
