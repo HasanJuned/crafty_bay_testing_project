@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../state_holders/new_product_controller.dart';
+import '../../state_holders/read_profile_controller.dart';
 import '../widgets/circular_icon_button.dart';
 import '../widgets/product_card_widget.dart';
 import '../widgets/section_header.dart';
@@ -38,7 +39,12 @@ class _HomeScreenState extends State<HomeScreen> {
             const Spacer(),
             CircularIconButton(
               onTap: () {
-                Get.to(CompleteProfileScreen());
+                // Get.to(CompleteProfileScreen());
+                if (AuthController.isLoggedIn()) {
+                  Get.find<MainBottomNavBarController>().changeScreen(2);
+                } else {
+                  Get.to(const CompleteProfileScreen());
+                }
               },
               icon: Icons.person,
             ),
@@ -160,18 +166,20 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 190,
                 child: GetBuilder<NewProductController>(
-                  builder: (newProductController) {
-                    return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: newProductController.productsByRemarksModel.data?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        return ProductCardWidget(
-                          productData: newProductController.productsByRemarksModel.data![index],
-                        );
-                      },
-                    );
-                  }
-                ),
+                    builder: (newProductController) {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: newProductController
+                            .productsByRemarksModel.data?.length ??
+                        0,
+                    itemBuilder: (context, index) {
+                      return ProductCardWidget(
+                        productData: newProductController
+                            .productsByRemarksModel.data![index],
+                      );
+                    },
+                  );
+                }),
               ),
               const SizedBox(
                 height: 4,
@@ -180,18 +188,20 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 190,
                 child: GetBuilder<PopularProductController>(
-                  builder: (popularProductController) {
-                    return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: popularProductController.productsByRemarksModel.data?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        return ProductCardWidget(
-                          productData: popularProductController.productsByRemarksModel.data![index],
-                        );
-                      },
-                    );
-                  }
-                ),
+                    builder: (popularProductController) {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: popularProductController
+                            .productsByRemarksModel.data?.length ??
+                        0,
+                    itemBuilder: (context, index) {
+                      return ProductCardWidget(
+                        productData: popularProductController
+                            .productsByRemarksModel.data![index],
+                      );
+                    },
+                  );
+                }),
               ),
               const SizedBox(
                 height: 4,
@@ -200,18 +210,20 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 190,
                 child: GetBuilder<SpecialProductController>(
-                  builder: (specialProductController) {
-                    return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: specialProductController.productsByRemarksModel.data?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        return ProductCardWidget(
-                          productData: specialProductController.productsByRemarksModel.data![index],
-                        );
-                      },
-                    );
-                  }
-                ),
+                    builder: (specialProductController) {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: specialProductController
+                            .productsByRemarksModel.data?.length ??
+                        0,
+                    itemBuilder: (context, index) {
+                      return ProductCardWidget(
+                        productData: specialProductController
+                            .productsByRemarksModel.data![index],
+                      );
+                    },
+                  );
+                }),
               ),
             ],
           ),

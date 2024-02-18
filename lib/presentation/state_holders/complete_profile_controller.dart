@@ -3,6 +3,7 @@ import 'package:crafty_bay_testing_project/data/services/network_caller.dart';
 import 'package:crafty_bay_testing_project/data/urls/urls.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/auth_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/profile.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/read_profile_controller.dart';
 import 'package:get/get.dart';
 
 class CompleteProfileController extends GetxController {
@@ -52,6 +53,7 @@ class CompleteProfileController extends GetxController {
     if (response.isSuccess) {
       _profile = Profile.fromJson(response.responseJson?['data']);
       await Get.find<AuthController>().setAccessToken(token, profile: _profile);
+      await Get.find<ReadProfileController>().readProfile(token);
       update();
       return true;
     } else {
