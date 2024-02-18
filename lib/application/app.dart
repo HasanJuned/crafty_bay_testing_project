@@ -12,7 +12,7 @@ class CraftyBay extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
-      initialBinding: GetxBindings(),
+      initialBinding: GetXBindings(),
       theme: ThemeData(
         primarySwatch: MaterialColor(AppColors.primaryColor.value, AppColors().color),
         elevatedButtonTheme: ElevatedButtonThemeData(

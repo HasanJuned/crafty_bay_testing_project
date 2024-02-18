@@ -5,4 +5,5 @@ class Urls{
   static String verifyOtp(String email, String otp) => '$baseUrl/VerifyLogin/$email/$otp';
   static const String slider = '$baseUrl/ListProductSlider';
   static const String categoryList = '$baseUrl/CategoryList';
+  static String productsByRemarks(productsByRemarks) => '$baseUrl/ListProductByRemark/$productsByRemarks';
 }

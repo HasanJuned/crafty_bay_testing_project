@@ -1,6 +1,9 @@
 import 'package:crafty_bay_testing_project/presentation/state_holders/category_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/main_bottom_nav_bar_controller.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/new_product_controller.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/popular_product_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/slider_controller.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/special_product_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/screens/cart_screen.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/screens/categories_screen.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/screens/wishlist_screen.dart';
@@ -31,6 +34,9 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Get.find<SliderController>().getSlider();
       Get.find<CategoryController>().getCategoryData();
+      Get.find<NewProductController>().newProducts();
+      Get.find<PopularProductController>().popularProducts();
+      Get.find<SpecialProductController>().specialProducts();
     });
   }
 
