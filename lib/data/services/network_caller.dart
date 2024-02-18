@@ -13,10 +13,10 @@ import '../model/network_response.dart';
 
 class NetworkCaller {
   /// get request method
-  Future<NetworkResponse> getRequest(String url) async {
+  Future<NetworkResponse> getRequest(String url, {String? token}) async {
     try {
       Response response = await get(Uri.parse(url),
-          headers: {'token': AuthController.accessToken.toString()});
+          headers: {'token': (token ?? AuthController.accessToken).toString()});
       log(response.statusCode.toString());
       log(response.body);
       if (response.statusCode == 200) {
@@ -33,8 +33,7 @@ class NetworkCaller {
     return NetworkResponse(false, -1, null);
   }
 
-  Future<NetworkResponse> postRequest(String url, Map<String, dynamic> body,
-      {bool isLogin = false}) async {
+  Future<NetworkResponse> postRequest(String url, Map<String, dynamic> body, {String token = '', bool isLogin = false}) async {
     try {
       Response response = await post(
         Uri.parse(url),

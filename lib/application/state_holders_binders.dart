@@ -5,6 +5,7 @@ import 'package:crafty_bay_testing_project/presentation/state_holders/special_pr
 import 'package:get/get.dart';
 
 import '../presentation/state_holders/category_controller.dart';
+import '../presentation/state_holders/complete_profile_controller.dart';
 import '../presentation/state_holders/email_verification_controller.dart';
 import '../presentation/state_holders/main_bottom_nav_bar_controller.dart';
 import '../presentation/state_holders/new_product_controller.dart';
@@ -20,6 +21,7 @@ class GetXBindings extends Bindings{
     Get.put(NewProductController());
     Get.put(PopularProductController());
     Get.put(SpecialProductController());
+    Get.put(CompleteProfileController());
   }
 
 }

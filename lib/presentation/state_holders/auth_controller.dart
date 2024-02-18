@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:crafty_bay_testing_project/presentation/state_holders/profile.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -6,17 +9,21 @@ import '../ui/screens/auth_screens/emai_verification_screen.dart';
 class AuthController {
   static String? _accessToken;
   static String? _readProfile;
+  static Profile? _setProfile;
   static String? themeMode;
 
   static String? get accessToken => _accessToken;
   static String? get readProfile => _readProfile;
+  static Profile? get setProfile => _setProfile;
 
   /// set user token
-  static Future<void> setAccessToken(String token) async {
+  static Future<void> setAccessToken(String token, {Profile? profile}) async {
     final SharedPreferences sharedPreferences =
     await SharedPreferences.getInstance();
     await sharedPreferences.setString('access_token', token);
+    await sharedPreferences.setString('profile', jsonEncode(profile?.toJson()));
     _accessToken = token;
+    _setProfile = profile;
   }
 
   static Future<void> setReadProfile(String read_profile) async {

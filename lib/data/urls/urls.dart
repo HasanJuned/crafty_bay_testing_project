@@ -6,4 +6,6 @@ class Urls{
   static const String slider = '$baseUrl/ListProductSlider';
   static const String categoryList = '$baseUrl/CategoryList';
   static String productsByRemarks(productsByRemarks) => '$baseUrl/ListProductByRemark/$productsByRemarks';
+  static String completeProfile = '$baseUrl/CreateProfile';
+  static String readProfile = '$baseUrl/ReadProfile';
 }
