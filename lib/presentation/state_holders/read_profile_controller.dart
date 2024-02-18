@@ -37,6 +37,7 @@ class ReadProfileController extends GetxController {
       update();
       return true;
     } else {
+      _message = 'Read profile fetch failed';
       update();
       return false;
     }
