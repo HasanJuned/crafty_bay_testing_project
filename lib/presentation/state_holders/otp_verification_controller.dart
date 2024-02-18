@@ -13,8 +13,8 @@ class OtpVerificationController extends GetxController {
       _otpVerificationControllerInProgress;
 
   String get message => _message;
-  String token = '';
-
+  String _token = '';
+  String get token => _token;
   Future<bool> verifyOtp(String email, String otp) async {
     _otpVerificationControllerInProgress = true;
     update();
@@ -22,15 +22,15 @@ class OtpVerificationController extends GetxController {
     final NetworkResponse response =
         await NetworkCaller().getRequest(Urls.verifyOtp(email, otp));
     _otpVerificationControllerInProgress = false;
-    update();
 
     if (response.isSuccess) {
-      AuthController.setAccessToken(response.responseJson!['data']);
-      token = response.responseJson!['data'];
-      _message = response.responseJson?['data'] ?? '';
+      AuthController().setAccessToken(response.responseJson!['data']);
+      _token = response.responseJson!['data'];
+      update();
       return true;
     } else {
       _message = response.responseJson?['data'] ?? 'Something went error';
+      update();
       return false;
     }
   }

@@ -1,5 +1,6 @@
 import 'package:crafty_bay_testing_project/presentation/state_holders/otp_verification_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/popular_product_controller.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/read_profile_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/slider_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/special_product_controller.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,7 @@ class GetXBindings extends Bindings{
     Get.put(PopularProductController());
     Get.put(SpecialProductController());
     Get.put(CompleteProfileController());
+    Get.put(ReadProfileController());
   }
 
 }

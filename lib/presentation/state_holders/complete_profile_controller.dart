@@ -51,7 +51,7 @@ class CompleteProfileController extends GetxController {
 
     if (response.isSuccess) {
       _profile = Profile.fromJson(response.responseJson?['data']);
-      await AuthController.setAccessToken(token, profile: _profile);
+      await Get.find<AuthController>().setAccessToken(token, profile: _profile);
       update();
       return true;
     } else {

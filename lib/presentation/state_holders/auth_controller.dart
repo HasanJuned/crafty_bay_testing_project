@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../ui/screens/auth_screens/emai_verification_screen.dart';
+import 'otp_verification_controller.dart';
 
 class AuthController {
   static String? _accessToken;
@@ -16,13 +17,15 @@ class AuthController {
   static String? get readProfile => _readProfile;
   static Profile? get setProfile => _setProfile;
 
+  String token1 = Get.find<OtpVerificationController>().token;
+
   /// set user token
-  static Future<void> setAccessToken(String token, {Profile? profile}) async {
+  Future<void> setAccessToken(token1, {Profile? profile}) async {
     final SharedPreferences sharedPreferences =
     await SharedPreferences.getInstance();
-    await sharedPreferences.setString('access_token', token);
+    await sharedPreferences.setString('access_token', token1);
     await sharedPreferences.setString('profile', jsonEncode(profile?.toJson()));
-    _accessToken = token;
+    _accessToken = token1;
     _setProfile = profile;
   }
 
