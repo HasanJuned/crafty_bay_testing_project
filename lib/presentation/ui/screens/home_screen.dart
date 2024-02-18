@@ -16,6 +16,7 @@ import '../widgets/circular_icon_button.dart';
 import '../widgets/product_card_widget.dart';
 import '../widgets/section_header.dart';
 import '../widgets/home_screen_widgets/home_slider.dart';
+import 'auth_screens/complete_profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -36,7 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
             SvgPicture.asset(ImageAssets.craftyBayAppBarPhotoSvg),
             const Spacer(),
             CircularIconButton(
-              onTap: () {},
+              onTap: () {
+                Get.to(CompleteProfileScreen());
+              },
               icon: Icons.person,
             ),
             const SizedBox(
