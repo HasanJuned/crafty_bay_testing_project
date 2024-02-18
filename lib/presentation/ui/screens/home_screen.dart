@@ -12,7 +12,6 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../state_holders/new_product_controller.dart';
-import '../../state_holders/read_profile_controller.dart';
 import '../widgets/circular_icon_button.dart';
 import '../widgets/product_card_widget.dart';
 import '../widgets/section_header.dart';
