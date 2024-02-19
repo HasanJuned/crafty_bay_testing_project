@@ -9,4 +9,5 @@ class Urls{
   static String completeProfile = '$baseUrl/CreateProfile';
   static String readProfile = '$baseUrl/ReadProfile';
   static String productDetailsById(productId) => '$baseUrl/ProductDetailsById/$productId';
+  static String createCartList = '$baseUrl/CreateCartList';
 }

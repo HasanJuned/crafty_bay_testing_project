@@ -1,4 +1,5 @@
 import 'package:crafty_bay_testing_project/data/model/product_details_data.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/cart_list_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/product_details_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/widgets/product_image_slider.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,6 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-
   int _selectedColor = 0;
   int _selectedSize = 0;
   int quantity = 1;
@@ -72,7 +72,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 ),
               ),
               addToCartBottomContainer(
-                  productDetailsController.productDetailsData)
+                productDetailsController.productDetailsData,
+                productDetailsController.availableColors,
+                productDetailsController.availableSizes,
+              ),
             ],
           );
         }),
@@ -91,7 +94,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 
-  Container addToCartBottomContainer(ProductDetailsData productDetailsData) {
+  Container addToCartBottomContainer(ProductDetailsData productDetailsData,
+      List<String> colors, List<String> size) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
@@ -122,7 +126,46 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ),
             ],
           ),
-          ElevatedButton(onPressed: () {}, child: const Text('Add to Cart'))
+          GetBuilder<AddToCartListController>(
+              builder: (addToCartListController) {
+            if (addToCartListController.cartListControllerInProgress) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return ElevatedButton(
+              onPressed: () {
+                addToCartListController
+                    .addToCartList(
+                  productDetailsData.productId!,
+                  colors[_selectedColor],
+                  size[_selectedSize],
+                  quantity,
+                ).then((result) {
+                  if (result) {
+                    Get.showSnackbar(
+                      const GetSnackBar(
+                        title: 'Added to Cart',
+                        message: 'This product has been added to cart',
+                        duration: Duration(seconds: 2),
+                        backgroundColor: Colors.green,
+                        snackPosition: SnackPosition.TOP,
+                      ),
+                    );
+                  } else {
+                    Get.showSnackbar(const GetSnackBar(
+                      title: 'Failed to add cart',
+                      message: 'Try again!',
+                      duration: Duration(seconds: 2),
+                      backgroundColor: Colors.redAccent,
+                      snackPosition: SnackPosition.TOP,
+                    ));
+                  }
+                });
+              },
+              child: const Text('Add to Cart'),
+            );
+          })
         ],
       ),
     );
