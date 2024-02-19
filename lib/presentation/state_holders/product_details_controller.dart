@@ -11,6 +11,13 @@ class ProductDetailsController extends GetxController {
   ProductDetailsModel _productDetailsModel = ProductDetailsModel();
   String _message = '';
 
+  final List<String> _availableColors = [];
+  List<String> _availableSizes = [];
+
+  List<String> get availableColors => _availableColors;
+
+  List<String> get availableSizes => _availableSizes;
+
   bool get productDetailsControllerInProgress =>
       _productDetailsControllerInProgress;
 
@@ -27,8 +34,9 @@ class ProductDetailsController extends GetxController {
     _productDetailsControllerInProgress = false;
 
     if (response.isSuccess) {
-      _productDetailsData =
-          ProductDetailsModel.fromJson(response.responseJson ?? {}).data!.first;
+      _productDetailsData = ProductDetailsModel.fromJson(response.responseJson ?? {}).data!.first;
+      _convertStringToColor(_productDetailsData.color ?? '');
+      _convertStringToSizes(_productDetailsData.size ?? '');
       update();
       return true;
     } else {
@@ -36,5 +44,18 @@ class ProductDetailsController extends GetxController {
       update();
       return false;
     }
+  }
+  void _convertStringToColor(String color) {
+    _availableColors.clear();
+    final List<String> splittedColors = color.split(',');
+    for (String c in splittedColors) {
+      if (c.isNotEmpty) {
+        _availableColors.add(c);
+      }
+    }
+  }
+
+  void _convertStringToSizes(String sizes) {
+    _availableSizes = sizes.split(',');
   }
 }
