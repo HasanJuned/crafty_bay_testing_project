@@ -48,33 +48,21 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         children: [
                           ProductImageSlider(
                             imageList: [
-                              productDetailsController
-                                      .productDetailsData.img1 ??
-                                  '',
-                              productDetailsController
-                                      .productDetailsData.img2 ??
-                                  '',
-                              productDetailsController
-                                      .productDetailsData.img3 ??
-                                  '',
-                              productDetailsController
-                                      .productDetailsData.img4 ??
-                                  '',
+                              productDetailsController.productDetailsData.img1 ?? '',
+                              productDetailsController.productDetailsData.img2 ?? '',
+                              productDetailsController.productDetailsData.img3 ?? '',
+                              productDetailsController.productDetailsData.img4 ?? '',
                             ],
                           ),
                           productDetailsAppBar,
                         ],
                       ),
-                      productDetails(
-                          productDetailsController.productDetailsData),
+                      productDetails(productDetailsController.productDetailsData),
                     ],
                   ),
                 ),
               ),
-              addToCartBottomContainer(
-                productDetailsController.productDetailsData,
-                productDetailsController.availableColors,
-                productDetailsController.availableSizes,
+              addToCartBottomContainer(productDetailsController.productDetailsData, productDetailsController.availableColors, productDetailsController.availableSizes,
               ),
             ],
           );
