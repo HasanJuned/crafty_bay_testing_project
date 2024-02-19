@@ -1,17 +1,17 @@
-import 'package:crafty_bay_testing_project/data/model/product_data.dart';
+import 'package:crafty_bay_testing_project/data/model/product_details_data.dart';
 
-class ProductsByRemarksModel {
+class ProductDetailsModel {
   String? msg;
-  List<ProductData>? data;
+  List<ProductDetailsData>? data;
 
-  ProductsByRemarksModel({this.msg, this.data});
+  ProductDetailsModel({this.msg, this.data});
 
-  ProductsByRemarksModel.fromJson(Map<String, dynamic> json) {
+  ProductDetailsModel.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     if (json['data'] != null) {
-      data = <ProductData>[];
+      data = <ProductDetailsData>[];
       json['data'].forEach((v) {
-        data!.add(ProductData.fromJson(v));
+        data!.add(ProductDetailsData.fromJson(v));
       });
     }
   }
@@ -25,4 +25,7 @@ class ProductsByRemarksModel {
     return data;
   }
 }
+
+
+
 

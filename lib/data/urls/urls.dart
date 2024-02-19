@@ -8,4 +8,5 @@ class Urls{
   static String productsByRemarks(productsByRemarks) => '$baseUrl/ListProductByRemark/$productsByRemarks';
   static String completeProfile = '$baseUrl/CreateProfile';
   static String readProfile = '$baseUrl/ReadProfile';
+  static String productDetailsById(productId) => '$baseUrl/ProductDetailsById/$productId';
 }

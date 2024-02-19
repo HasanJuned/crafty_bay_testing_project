@@ -11,6 +11,7 @@ import '../presentation/state_holders/complete_profile_controller.dart';
 import '../presentation/state_holders/email_verification_controller.dart';
 import '../presentation/state_holders/main_bottom_nav_bar_controller.dart';
 import '../presentation/state_holders/new_product_controller.dart';
+import '../presentation/state_holders/product_details_controller.dart';
 
 class GetXBindings extends Bindings{
   @override
@@ -26,6 +27,7 @@ class GetXBindings extends Bindings{
     Get.put(CompleteProfileController());
     Get.put(ReadProfileController());
     Get.put(AuthController());
+    Get.put(ProductDetailsController());
   }
 
 }

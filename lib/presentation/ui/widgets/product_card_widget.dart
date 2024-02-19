@@ -23,7 +23,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
     return InkWell(
       borderRadius: BorderRadius.circular(8),
       onTap: () {
-        Get.to(const ProductDetailsScreen());
+        Get.to(ProductDetailsScreen(productId: widget.productData.id!,));
       },
       child: Card(
         shadowColor: AppColors.primaryColor.withOpacity(0.2),
