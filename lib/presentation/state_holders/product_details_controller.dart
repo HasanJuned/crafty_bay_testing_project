@@ -10,20 +10,14 @@ class ProductDetailsController extends GetxController {
   ProductDetailsData _productDetailsData = ProductDetailsData();
   ProductDetailsModel _productDetailsModel = ProductDetailsModel();
   String _message = '';
-
   final List<String> _availableColors = [];
   List<String> _availableSizes = [];
 
-  List<String> get availableColors => _availableColors;
-
-  List<String> get availableSizes => _availableSizes;
-
-  bool get productDetailsControllerInProgress =>
-      _productDetailsControllerInProgress;
-
+  bool get productDetailsControllerInProgress => _productDetailsControllerInProgress;
   ProductDetailsData get productDetailsData => _productDetailsData;
-
   String get message => _message;
+  List<String> get availableColors => _availableColors;
+  List<String> get availableSizes => _availableSizes;
 
   Future<bool> getProductDetails(int productId) async {
     _productDetailsControllerInProgress = true;

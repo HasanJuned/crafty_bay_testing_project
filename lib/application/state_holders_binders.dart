@@ -1,5 +1,5 @@
 import 'package:crafty_bay_testing_project/presentation/state_holders/auth_controller.dart';
-import 'package:crafty_bay_testing_project/presentation/state_holders/cart_list_controller.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/add_to_cart_list_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/otp_verification_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/popular_product_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/read_profile_controller.dart';

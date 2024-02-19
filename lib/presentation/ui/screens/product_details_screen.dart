@@ -1,5 +1,5 @@
 import 'package:crafty_bay_testing_project/data/model/product_details_data.dart';
-import 'package:crafty_bay_testing_project/presentation/state_holders/cart_list_controller.dart';
+import 'package:crafty_bay_testing_project/presentation/state_holders/add_to_cart_list_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/state_holders/product_details_controller.dart';
 import 'package:crafty_bay_testing_project/presentation/ui/widgets/product_image_slider.dart';
 import 'package:flutter/material.dart';
