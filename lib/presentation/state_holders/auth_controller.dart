@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:crafty_bay_testing_project/presentation/state_holders/profile.dart';
+import 'package:crafty_bay_testing_project/data/model/profile.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

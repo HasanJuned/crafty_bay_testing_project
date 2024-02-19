@@ -1,7 +1,7 @@
 import 'package:crafty_bay_testing_project/data/model/network_response.dart';
 import 'package:crafty_bay_testing_project/data/services/network_caller.dart';
 import 'package:crafty_bay_testing_project/data/urls/urls.dart';
-import 'package:crafty_bay_testing_project/presentation/state_holders/profile.dart';
+import 'package:crafty_bay_testing_project/data/model/profile.dart';
 import 'package:get/get.dart';
 
 class ReadProfileController extends GetxController {
